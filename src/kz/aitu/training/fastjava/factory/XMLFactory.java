@@ -39,6 +39,7 @@ public class XMLFactory {
 
                 Attr attr = document.createAttribute("id");
                 attr.setValue(Integer.toString(order.getId()));
+                orderElement.setAttributeNode(attr);
 
                 // customerID element
                 Element customerID = document.createElement("customerID");
