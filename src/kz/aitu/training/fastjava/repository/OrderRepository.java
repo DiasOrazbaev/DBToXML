@@ -23,7 +23,7 @@ public class OrderRepository {
         // try with resources (means after doing try block, streams below automatically closed)
         try(
                 Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(query);
+                ResultSet resultSet = statement.executeQuery(query)
                 ) {
 
             List<Order> orderList = new ArrayList<>();
@@ -42,5 +42,20 @@ public class OrderRepository {
             e.printStackTrace();
         }
         return Collections.emptyList();
+    }
+
+    public boolean importOrders(List<Order> list) {
+        String query;
+        for (Order order : list) {
+            query = String.format("insert into orders(customerid, itemid, amount, totalprice) VALUES (%d,%d,%d,%f);",
+                    order.getCustomerID(), order.getItemID(), order.getAmount(), order.getTotalPrice());
+            try (Statement statement = connection.createStatement()){
+                statement.executeQuery(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return true;
     }
 }

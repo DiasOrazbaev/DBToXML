@@ -1,5 +1,6 @@
 package kz.aitu.training.fastjava.factory;
 
+
 import kz.aitu.training.fastjava.models.Customer;
 import kz.aitu.training.fastjava.models.Order;
 import kz.aitu.training.fastjava.util.OSCheck;
@@ -19,10 +20,6 @@ import java.io.File;
 import java.util.List;
 
 public class XMLFactory {
-
-    public enum OSType {
-        Windows, MacOS, Linux, Other
-    }
 
     private XMLFactory() {
         throw new IllegalStateException("Utility class");
@@ -54,17 +51,17 @@ public class XMLFactory {
                 orderElement.appendChild(firstName);
 
                 // lastName
-                Element lastName = document.createElement("firstName");
+                Element lastName = document.createElement("lastName");
                 lastName.appendChild(document.createTextNode(customer.getLastName()));
                 orderElement.appendChild(lastName);
 
                 // balance
-                Element balance = document.createElement("firstName");
+                Element balance = document.createElement("balance");
                 balance.appendChild(document.createTextNode(Double.toString(customer.getBalance())));
                 orderElement.appendChild(balance);
 
                 // phone
-                Element phone = document.createElement("firstName");
+                Element phone = document.createElement("phone");
                 phone.appendChild(document.createTextNode(customer.getPhone()));
                 orderElement.appendChild(phone);
             }

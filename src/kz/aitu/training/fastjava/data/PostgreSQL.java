@@ -13,7 +13,8 @@ public class PostgreSQL {
 
     public static Connection getConnection() {
         try {
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/shopdb", "postgres", "ahahahah umny chel");
+
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/shopdb", "postgres", "AHAHAHAHA ok");
         } catch (SQLException e) {
             e.printStackTrace();
         }
